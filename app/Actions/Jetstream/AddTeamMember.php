@@ -2,6 +2,8 @@
 
 namespace App\Actions\Jetstream;
 
+use Closure;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Jetstream\Contracts\AddsTeamMembers;
@@ -15,11 +17,12 @@ class AddTeamMember implements AddsTeamMembers
     /**
      * Add a new team member to the given team.
      *
-     * @param  mixed  $user
-     * @param  mixed  $team
-     * @param  string  $email
-     * @param  string|null  $role
+     * @param mixed $user
+     * @param mixed $team
+     * @param string $email
+     * @param string|null $role
      * @return void
+     * @throws AuthorizationException
      */
     public function add($user, $team, string $email, string $role = null)
     {
@@ -46,7 +49,7 @@ class AddTeamMember implements AddsTeamMembers
      * @param  string|null  $role
      * @return void
      */
-    protected function validate($team, string $email, ?string $role)
+    protected function validate(mixed $team, string $email, ?string $role)
     {
         Validator::make([
             'email' => $email,
@@ -63,7 +66,7 @@ class AddTeamMember implements AddsTeamMembers
      *
      * @return array
      */
-    protected function rules()
+    protected function rules(): array
     {
         return array_filter([
             'email' => ['required', 'email', 'exists:users'],
@@ -78,9 +81,9 @@ class AddTeamMember implements AddsTeamMembers
      *
      * @param  mixed  $team
      * @param  string  $email
-     * @return \Closure
+     * @return Closure
      */
-    protected function ensureUserIsNotAlreadyOnTeam($team, string $email)
+    protected function ensureUserIsNotAlreadyOnTeam(mixed $team, string $email): Closure
     {
         return function ($validator) use ($team, $email) {
             $validator->errors()->addIf(

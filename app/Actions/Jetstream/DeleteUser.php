@@ -11,14 +11,14 @@ class DeleteUser implements DeletesUsers
     /**
      * The team deleter implementation.
      *
-     * @var \Laravel\Jetstream\Contracts\DeletesTeams
+     * @var DeletesTeams
      */
-    protected $deletesTeams;
+    protected DeletesTeams $deletesTeams;
 
     /**
      * Create a new action instance.
      *
-     * @param  \Laravel\Jetstream\Contracts\DeletesTeams  $deletesTeams
+     * @param DeletesTeams $deletesTeams
      * @return void
      */
     public function __construct(DeletesTeams $deletesTeams)
@@ -48,7 +48,7 @@ class DeleteUser implements DeletesUsers
      * @param  mixed  $user
      * @return void
      */
-    protected function deleteTeams($user)
+    protected function deleteTeams(mixed $user)
     {
         $user->teams()->detach();
 

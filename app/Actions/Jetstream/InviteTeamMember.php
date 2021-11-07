@@ -2,6 +2,7 @@
 
 namespace App\Actions\Jetstream;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -17,11 +18,12 @@ class InviteTeamMember implements InvitesTeamMembers
     /**
      * Invite a new team member to the given team.
      *
-     * @param  mixed  $user
-     * @param  mixed  $team
-     * @param  string  $email
-     * @param  string|null  $role
+     * @param mixed $user
+     * @param mixed $team
+     * @param string $email
+     * @param string|null $role
      * @return void
+     * @throws AuthorizationException
      */
     public function invite($user, $team, string $email, string $role = null)
     {
@@ -47,7 +49,7 @@ class InviteTeamMember implements InvitesTeamMembers
      * @param  string|null  $role
      * @return void
      */
-    protected function validate($team, string $email, ?string $role)
+    protected function validate(mixed $team, string $email, ?string $role)
     {
         Validator::make([
             'email' => $email,
