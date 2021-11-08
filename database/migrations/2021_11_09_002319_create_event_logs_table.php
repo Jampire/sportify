@@ -9,9 +9,9 @@ return new class extends Migration {
     {
         Schema::create('event_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('event_id');
-            $table->foreignId('organization_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('event_id')->constrained();
+            $table->foreignId('organization_id')->constrained();
             $table->string('track_url');
             $table->string('track_distance');
             $table->dateTime('track_start_date');

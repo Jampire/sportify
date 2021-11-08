@@ -9,7 +9,11 @@ return new class extends Migration {
     {
         Schema::create('komoots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')
+                ->unique()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('profile_url');
             $table->timestamps();
         });
