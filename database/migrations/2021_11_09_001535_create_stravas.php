@@ -12,8 +12,8 @@ return new class extends Migration {
             $table->foreignId('user_id')
                 ->unique()
                 ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->string('profile_url');
             $table->timestamps();
         });
