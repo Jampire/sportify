@@ -2,24 +2,16 @@
 
 namespace Database\Factories;
 
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Class TeamFactory
+ * Class StravaFactory
  *
  * @author Dzianis Kotau <me@dzianiskotau.com>
  */
-class TeamFactory extends Factory
+class StravaFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Team::class;
-
     /**
      * Define the model's default state.
      *
@@ -29,9 +21,8 @@ class TeamFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->company(),
             'user_id' => User::factory(),
-            'personal_team' => true,
+            'profile_id' => $this->faker->randomNumber(),
         ];
     }
 }

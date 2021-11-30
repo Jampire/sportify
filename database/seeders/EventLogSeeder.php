@@ -2,15 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Department;
 use Illuminate\Database\Seeder;
 
 /**
- * Class DepartmentSeeder
+ * Class EventLogSeeder
  *
  * @author Dzianis Kotau <me@dzianiskotau.com>
  */
-class DepartmentSeeder extends Seeder
+class EventLogSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,8 +19,6 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        Department::factory()
-            ->count(10)
-            ->create();
+        //
     }
 }

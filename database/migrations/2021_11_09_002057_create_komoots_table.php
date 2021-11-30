@@ -14,7 +14,7 @@ return new class extends Migration {
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->string('profile_url');
+            $table->string('profile_id');
             $table->timestamps();
         });
     }

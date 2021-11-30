@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
+ * Class Strava
+ *
  * @author Dzianis Kotau <me@dzianiskotau.com>
  */
-class Department extends Model
+class Strava extends Model
 {
     use HasFactory;
 
@@ -20,26 +21,28 @@ class Department extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'description',
-        'organization_id',
+        'user_id',
+        'profile_id',
     ];
 
     /**
      * @author Dzianis Kotau <me@dzianiskotau.com>
-     * @return HasMany
+     *
+     * @return BelongsTo
      */
-    public function users(): HasMany
+    public function user(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
+     * Get profile_url attribute
+     *
      * @author Dzianis Kotau <me@dzianiskotau.com>
-     * @return BelongsTo
+     * @return string
      */
-    public function organization(): BelongsTo
+    public function getProfileUrlAttribute(): string
     {
-        return $this->belongsTo(Organization::class);
+        return config('sportify.strava_profile_uri') . $this->profile_id;
     }
 }

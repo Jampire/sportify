@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- *
+ * @author Dzianis Kotau <me@dzianiskotau.com>
  */
 class Organization extends Model
 {
@@ -25,6 +25,7 @@ class Organization extends Model
     ];
 
     /**
+     * @author Dzianis Kotau <me@dzianiskotau.com>
      * @return HasMany
      */
     public function users(): HasMany
@@ -33,6 +34,7 @@ class Organization extends Model
     }
 
     /**
+     * @author Dzianis Kotau <me@dzianiskotau.com>
      * @return HasMany
      */
     public function departments(): HasMany
