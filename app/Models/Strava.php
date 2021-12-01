@@ -43,6 +43,6 @@ class Strava extends Model
      */
     public function getProfileUrlAttribute(): string
     {
-        return config('sportify.strava_profile_uri') . $this->profile_id;
+        return config('sportify.strava_profile_url') . $this->profile_id;
     }
 }

@@ -17,6 +17,8 @@ use Laravel\Sanctum\HasApiTokens;
 // TODO implement MustVerifyEmail
 
 /**
+ * Class User
+ *
  * @author Dzianis Kotau <me@dzianiskotau.com>
  */
 class User extends Authenticatable

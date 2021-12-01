@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
+ * Class Department
+ *
  * @author Dzianis Kotau <me@dzianiskotau.com>
  */
 class Department extends Model
