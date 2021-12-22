@@ -134,4 +134,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Strava::class);
     }
+
+    /**
+     * @author Dzianis Kotau <me@dzianiskotau.com>
+     *
+     * @return HasOne
+     */
+    public function google(): HasOne
+    {
+        return $this->hasOne(GoogleAuth::class);
+    }
 }
