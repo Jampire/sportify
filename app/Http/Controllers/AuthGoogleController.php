@@ -47,8 +47,7 @@ class AuthGoogleController extends Controller
             return redirect()->home(); // TODO: return on error page with error message
         }
 
-        // TODO: organization_id not null by email
-        $organizationId = Organization::findByUserEmail($socialUser->getEmail())?->id;
+        $organizationId = Organization::findByEmail($socialUser->getEmail())?->id;
         if ($organizationId === null) {
             logs()->error(
                 sprintf('User %s does not belong to any organization', $socialUser->getEmail())
@@ -65,27 +64,17 @@ class AuthGoogleController extends Controller
                 'name' => $socialUser->getName(),
                 'organization_id' => $organizationId,
                 'profile_photo_path' => $socialUser->getAvatar(),
-                'socialite_type' => GoogleAuth::class,
                 'email_verified_at' => now(),
-            ]
-        );
-
-        // TODO: no need?
-        GoogleAuth::updateOrCreate(
-            [
-                'user_id' => $user->id,
-            ],
-            [
-                'google_id' => $socialUser->getId(),
-                'nickname' => $socialUser->getNickname(),
-                'name' => $socialUser->getName(),
-                'email' => $socialUser->getEmail(),
-                'avatar' => $socialUser->getAvatar(),
+                'socialite_id' => $socialUser->getId(),
+                'socialite_type' => 'google',
+                'socialite_token' => $socialUser->token,
+                'socialite_refresh_token' => $socialUser->refreshToken,
+                'socialite_expires_in' => $socialUser->expiresIn,
             ]
         );
 
         Auth::login($user);
 
-        return redirect()->home();
+        return redirect()->back();
     }
 }

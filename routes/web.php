@@ -23,10 +23,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group([
-    'as' => 'google.auth.'
+    'as' => 'auth.'
 ], function () {
     Route::get('auth/google/redirect', [AuthGoogleController::class, 'redirect'])
-        ->name('redirect');
+        ->name('google.redirect');
     Route::get('auth/google/callback', [AuthGoogleController::class, 'callback'])
-        ->name('callback');
+        ->name('google.callback');
 });

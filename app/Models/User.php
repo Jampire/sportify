@@ -40,6 +40,11 @@ class User extends Authenticatable
         'password',
         'organization_id',
         'department_id',
+        'socialite_id',
+        'socialite_type',
+        'socialite_token',
+        'socialite_refresh_token',
+        'socialite_expires_in',
     ];
 
     /**
@@ -52,6 +57,8 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'socialite_token',
+        'socialite_refresh_token',
     ];
 
     /**
@@ -61,6 +68,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'socialite_expires_in' => 'datetime',
     ];
 
     /**
@@ -133,15 +141,5 @@ class User extends Authenticatable
     public function strava(): HasOne
     {
         return $this->hasOne(Strava::class);
-    }
-
-    /**
-     * @author Dzianis Kotau <me@dzianiskotau.com>
-     *
-     * @return HasOne
-     */
-    public function google(): HasOne
-    {
-        return $this->hasOne(GoogleAuth::class);
     }
 }

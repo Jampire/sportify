@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 /**
  * Class Organization
@@ -25,6 +26,18 @@ class Organization extends Model
         'description',
         'url',
     ];
+
+    /**
+     * Find Organization by user's email domain.
+     *
+     * @author Dzianis Kotau <me@dzianiskotau.com>
+     * @param string $email
+     * @return self
+     */
+    public static function findByEmail(string $email): self
+    {
+        return self::firstWhere('email_domain', Str::after($email, '@'));
+    }
 
     /**
      * @author Dzianis Kotau <me@dzianiskotau.com>
