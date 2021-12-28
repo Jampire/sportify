@@ -1,0 +1,16 @@
+extend type Query {
+    events: [Event!]! @all(model: "App\\Models\\SportEvent")
+    event(id: ID @eq): Event @find(model: "App\\Models\\SportEvent")
+}
+
+type Event {
+    id: ID!
+    name: String!
+    description: String!
+    start_date: DateTime!
+    end_date: DateTime!
+    suspended: Boolean!
+    deleted_at: DateTime
+    created_at: DateTime!
+    updated_at: DateTime!
+}

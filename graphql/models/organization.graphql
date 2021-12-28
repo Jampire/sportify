@@ -1,0 +1,15 @@
+extend type Query {
+    organizations: [Organization!]! @all
+    organization(id: ID @eq): Organization @find
+}
+
+type Organization {
+    id: ID!
+    name: String!
+    description: String
+    url: String
+    departments: [Department!] @hasMany
+    deleted_at: DateTime
+    created_at: DateTime!
+    updated_at: DateTime!
+}
