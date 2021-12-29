@@ -12,3 +12,17 @@ type Department {
     created_at: DateTime!
     updated_at: DateTime!
 }
+
+type Mutation {
+    createDepartment(
+        name: String! @rules(apply: ["string", "min:3"]),
+        description: String
+        organization_id: Int!
+    ): Department @create
+    updateDepartment(
+        id: ID!
+        name: String @rules(apply: ["string", "min:3"]),
+        description: String
+    ): Department @update
+    deleteDepartment(id: ID!): Department @delete
+}

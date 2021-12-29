@@ -4,63 +4,6 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-<<<<<<< HEAD
-type Query {
-    users: [User!]! @all
-    user(id: ID @eq): User @find
-
-    events: [Event!]! @all(model: "App\\Models\\SportEvent")
-    event(id: ID @eq): Event @find(model: "App\\Models\\SportEvent")
-
-    organizations: [Organization!]! @all
-    organization(id: ID @eq): Organization @find
-
-    departments: [Department!]! @all
-    department(id: ID @eq): Department @find
-}
-
-type User {
-    id: ID!
-    name: String!
-    email: String!
-    created_at: DateTime!
-    updated_at: DateTime!
-}
-
-type Event {
-    id: ID!
-    name: String!
-    description: String!
-    start_date: DateTime!
-    end_date: DateTime!
-    suspended: Boolean!
-    deleted_at: DateTime
-    created_at: DateTime!
-    updated_at: DateTime!
-}
-
-type Organization {
-    id: ID!
-    name: String!
-    description: String
-    url: String
-    departments: Department @hasMany
-    deleted_at: DateTime
-    created_at: DateTime!
-    updated_at: DateTime!
-}
-
-type Department {
-    id: ID
-    name: String!
-    description: String
-    organization: Organization! @belongsTo
-    deleted_at: DateTime
-    created_at: DateTime!
-    updated_at: DateTime!
-}
-=======
 type Query
 
 #import models/*.graphql
->>>>>>> fd8335d531eb20ab845e5de3a2005c2787ed3bc1

@@ -1,5 +1,5 @@
 extend type Query {
-    organizations: [Organization!]! @all
+    organizations: [Organization!]! @paginate(type: SIMPLE)
     organization(id: ID @eq): Organization @find
 }
 
