@@ -4,6 +4,7 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
+<<<<<<< HEAD
 type Query {
     users: [User!]! @all
     user(id: ID @eq): User @find
@@ -58,3 +59,8 @@ type Department {
     created_at: DateTime!
     updated_at: DateTime!
 }
+=======
+type Query
+
+#import models/*.graphql
+>>>>>>> fd8335d531eb20ab845e5de3a2005c2787ed3bc1
