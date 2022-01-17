@@ -105,6 +105,7 @@ class DatabaseSeeder extends Seeder
             'name' => self::UNKNOWN_COMPANY,
             'description' => self::UNKNOWN_COMPANY,
             'url' => null,
+            'email_domain' => 'gmail.com',
         ])->create()->id;
     }
 }

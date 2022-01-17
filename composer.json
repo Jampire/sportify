@@ -2,7 +2,7 @@
     "name": "jampire/sportify",
     "type": "project",
     "description": "Sportify App helps to manage sport events held for corporate employees",
-    "keywords": ["sportify", "sport", "strava", "komoot", "bamboohr"],
+    "keywords": ["sportify", "sport", "strava", "komoot"],
     "homepage": "https://github.com/Jampire/sportify",
     "license": "MIT",
     "authors": [

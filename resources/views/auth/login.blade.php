@@ -43,6 +43,17 @@
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <a href="{{ route('auth.google.redirect') }}">
+                    <span
+                        class="uppercase h-12 mt-3 text-white w-full rounded bg-red-800 hover:bg-red-900">
+                        <i class="fa fa-google mr-2"></i>
+                        {{ __('Signin with Google') }}
+                    </span>
+                </a>
+
+            </div>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

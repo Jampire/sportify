@@ -31,6 +31,7 @@ class OrganizationFactory extends Factory
             'name' => $this->faker->unique()->company(),
             'description' => $this->faker->sentence(),
             'url' => $this->faker->url,
+            'email_domain' => $this->faker->unique()->domainName(),
         ];
     }
 }

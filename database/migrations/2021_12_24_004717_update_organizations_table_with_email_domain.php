@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('organizations', function (Blueprint $table) {
-            $table->string('email_domain')->unique();
+            $table->string('email_domain')->unique()->after('url');
         });
     }
 

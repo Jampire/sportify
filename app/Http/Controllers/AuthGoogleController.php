@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GoogleAuth;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -38,11 +37,13 @@ class AuthGoogleController extends Controller
     {
         try {
             $socialUser = Socialite::driver('google')->user();
+            logs()->info('socialUser!: ' . $socialUser->getId());
         } catch (\Throwable $throwable) {
             logs()->error(
                 'Google Auth user is not found.',
                 ['error' => $throwable->getMessage()]
             );
+            logs()->error($throwable);
 
             return redirect()->home(); // TODO: return on error page with error message
         }
@@ -64,7 +65,7 @@ class AuthGoogleController extends Controller
                 'name' => $socialUser->getName(),
                 'organization_id' => $organizationId,
                 'profile_photo_path' => $socialUser->getAvatar(),
-                'email_verified_at' => now(),
+                'email_verified_at' => now(), // TODO: not working
                 'socialite_id' => $socialUser->getId(),
                 'socialite_type' => 'google',
                 'socialite_token' => $socialUser->token,
